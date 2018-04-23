@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
                 .setContentText("Dies ist ein Test")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setVibrate(new long[] { 1000, 1000})
-                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setLights(0xff00ffff, 350, 150);
         final int notificationId = 1;
 
 
