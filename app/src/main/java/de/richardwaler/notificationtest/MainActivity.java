@@ -1,5 +1,6 @@
 package de.richardwaler.notificationtest;
 
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //set Notification
+        //set and configure Notification
         final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Test Titel")
                 .setContentText("Dies ist ein Test")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVibrate(new long[] { 1000, 1000})
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI);
         final int notificationId = 1;
 
 
