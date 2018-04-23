@@ -4,6 +4,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,17 +16,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         //set Notification
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Test Titel")
                 .setContentText("Dies ist ein Test")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        int notificationId = 1;
+        final int notificationId = 1;
 
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        final NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
-// notificationId is a unique int for each notification that you must define
-        notificationManager.notify(notificationId, mBuilder.build());
+
+        final Button button = findViewById(R.id.notification_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // notificationId is a unique int for each notification that you must define
+                notificationManager.notify(notificationId, mBuilder.build());
+            }
+        });
+
+
     }
 }
