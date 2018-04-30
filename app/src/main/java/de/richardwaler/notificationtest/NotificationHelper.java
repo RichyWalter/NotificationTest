@@ -1,6 +1,5 @@
 package de.richardwaler.notificationtest;
 
-
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,6 +8,8 @@ import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+
+//Class to create Notification Channels
 
 class NotificationHelper extends ContextWrapper {
     private NotificationManager notifManager;
@@ -40,13 +41,13 @@ class NotificationHelper extends ContextWrapper {
                 CHANNEL_TWO_NAME, notifManager.IMPORTANCE_DEFAULT);
         notificationChannel2.enableLights(false);
         notificationChannel2.enableVibration(true);
-        notificationChannel2.setLightColor(Color.RED);
+        notificationChannel2.setLightColor(Color.GREEN);
         notificationChannel2.setShowBadge(false);
         getManager().createNotificationChannel(notificationChannel2);
 
     }
 
-//Create the notification that’ll be posted to Channel One//
+//Create the notification that will be posted to Channel One//
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Notification.Builder getNotification1(String title, String body) {
@@ -57,7 +58,7 @@ class NotificationHelper extends ContextWrapper {
                 .setAutoCancel(true);
     }
 
-//Create the notification that’ll be posted to Channel Two//
+//Create the notification that will be posted to Channel Two//
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Notification.Builder getNotification2(String title, String body) {

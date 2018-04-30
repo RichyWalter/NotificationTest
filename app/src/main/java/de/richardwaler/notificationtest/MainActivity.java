@@ -32,33 +32,34 @@ public class MainActivity extends AppCompatActivity {
             notificationHelper = new NotificationHelper(this);
             mainUI = new MainUi(findViewById(R.id.activity_main));
         }else{
-
             setContentView(R.layout.activity_main_fallback);
-            //set and configure Notification
-            final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.ic_launcher_background)
-                    .setContentTitle("Test Titel")
-                    .setContentText("Dies ist ein Test")
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .setVibrate(new long[] { 1000, 1000})
-                    .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
-                    .setLights(0xff00ffff, 350, 150);
-            final int notificationId = 1;
-
-
-            final NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
-
             final Button button = findViewById(R.id.notification_fallback);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    // notificationId is a unique int for each notification that you must define
-                    notificationManager.notify(notificationId, mBuilder.build());
+                    sendFallbackNotification();
                 }
             });
         }
+    }
 
+//fallback notification for Android SDK < 26
 
+    public void sendFallbackNotification(){
+        //set and configure Notification
+        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle(getString(R.string.fallbackNotification_title))
+                .setContentText(getString(R.string.fallbackNotification_text))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVibrate(new long[] { 1000, 1000})
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setLights(0xff00ffff, 350, 150);
+        final int notificationId = 1;
+
+        final NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(notificationId, mBuilder.build());
     }
 
 //Post the notifications//
