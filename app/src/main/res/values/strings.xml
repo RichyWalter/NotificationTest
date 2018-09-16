@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">NotificationTest</string>
+
+    <string name="app_name">Notification Test</string>
+    <string name="channel_one_text">Benachrichtigung - Kanal 1 </string>
+    <string name="channel_two_text">Benachrichtigung - Kanal 2</string>
+    <string name="button_label">Benachrichtige Mich!</string>
+    <string name="settings">Einstellungen öffnen</string>
+    <string name="channel_one_body">Nachricht aus Kanal 1</string>
+    <string name="channel_two_body">Nachricht aus Kanal 2</string>
+    <string name="fallbackNotification_title">Einfache Benachrichtigung</string>
+    <string name="fallbackNotification_text">Dies ist eine einfache Benachrichtigung !</string>
+
 </resources>
